@@ -1,0 +1,67 @@
+# Compiled object files
+*.o
+*.obj
+*.ko
+
+# Executable files
+*.exe
+*.out
+*.app
+*.dll
+*.so
+*.dylib
+
+# Static libraries
+*.a
+*.lib
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Profiling files
+*.gcno
+*.gcda
+*.gcov
+
+# Build directories
+build/
+Debug/
+Release/
+x64/
+x86/
+out/
+dist/
+
+# Dependency files
+*.d
+
+# Intermediate files
+*.s
+*.i
+
+# VSCode specific files
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/c_cpp_properties.json
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Local configurations
+*.local
+*.local.*
+
+# Package manager files
+conanbuildinfo.*
+conaninfo.txt
+
+# Temporary files
+*.tmp
+*.temp
