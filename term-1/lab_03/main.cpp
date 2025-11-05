@@ -40,6 +40,7 @@ int main () {
 
         cout << "║ ";
 
+        // Вывод значения x
         if (abs(x) < EPS) {
             cout << setw(12) << "0";
         } else {
@@ -47,7 +48,7 @@ int main () {
         }
         cout << " ║ ";
 
-        // Вывод x*cos(x)
+        // Вывод значения xcos(x)
         if (abs(x_cosx) < EPS) {
             cout << setw(15) << "0";
         } else {
@@ -64,7 +65,7 @@ int main () {
             taylor_value += tmp;
         }
 
-        // Вывод ряда Тейлора
+        // Вывод значения ряда Тейлора
         if (abs(taylor_value) < EPS) {
             cout << setw(11) << "0";
         } else {
