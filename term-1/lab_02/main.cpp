@@ -12,108 +12,55 @@ int main() {
         return 1;
     }
 
-    int selected_branch;
-    double x, y, result;
+    double x, y;
+
+    cout << "Введите значение x: ";
+    if (!(cin >> x)) {
+        cout << "Ошибка: Требуется числовое значение" << endl;
+        return 1;
+    }
+
+    cout << "Введите значение y: ";
+    if (!(cin >> y)) {
+        cout << "Ошибка: Требуется числовое значение" << endl;
+        return 1;
+    }
+
+    double func_value;
 
     switch (func_number) {
-        // Функция гиперболического синуса
         case 1: {
-            cout << "Введите значение x: ";
-            if (!(cin >> x)) {
-                cout << "Ошибка: Требуется числовое значение" << endl;
-                return 1;
-            }
-
-            cout << "Введите значение y: ";
-            if (!(cin >> x)) {
-                cout << "Ошибка: Требуется числовое значение" << endl;
-                return 1;
-            }
-
-            double condition_val = y * sinh(x);
-
-            if (condition_val == 10) {
-                result = log(x) - pow(sinh(x), 2);
-                selected_branch = 1;
-            } else if (condition_val < 10) {
-                result = 2 * y - 10 * sin(x);
-                selected_branch = 2;
-            } else {
-                result = pow(y, 2) + pow(sinh(x), 2);
-                selected_branch = 3;
-            }
-
+            // Функция sh(x)
+            func_value = sinh(x);
             break;
         }
-
-        // Функция возведения числа в квадрат
         case 2: {
-            cout << "Введите значение x: ";
-            if (!(cin >> x)) {
-                cout << "Ошибка: Требуется числовое значение" << endl;
-                return 1;
-            }
-
-            cout << "Введите значение y: ";
-            if (!(cin >> x)) {
-                cout << "Ошибка: Требуется числовое значение" << endl;
-                return 1;
-            }
-
-            double condition_val = y * pow(x, 2);
-
-            if (condition_val == 10) {
-                result = log(x) - pow(x, 4);
-                selected_branch = 1;
-            } else if (condition_val < 10) {
-                result = 2 * y - 10 * sin(x);
-                selected_branch = 2;
-            } else {
-                result = pow(y, 2) + pow(x, 4);
-                selected_branch = 3;
-            }
-
+            // Функция x^2
+            func_value = pow(x, 2);
             break;
         }
-
-        // Экспоненциальная функция
         case 3: {
-            cout << "Введите значение x: ";
-            if (!(cin >> x)) {
-                cout << "Ошибка: Требуется числовое значение" << endl;
-                return 1;
-            }
-
-            cout << "Введите значение y: ";
-            if (!(cin >> x)) {
-                cout << "Ошибка: Требуется числовое значение" << endl;
-                return 1;
-            }
-
-            double condition_val = y * exp(x);
-
-            if (condition_val == 10) {
-                result = log(x) - pow(exp(x), 2);
-                selected_branch = 1;
-            } else if (condition_val < 10) {
-                result = 2 * y - 10 * sin(x);
-                selected_branch = 2;
-            } else {
-                result = pow(y, 2) + pow(exp(x), 2);
-                selected_branch = 3;
-            }
-
+            // Функция e^x
+            func_value = exp(x);
             break;
-        }
-
-        default: {
-            cout << "Ошибка: Некорректный номер функции" << endl;
-            return 1;
         }
     }
 
-    cout << "Результат: " << result << endl;
-    cout << "Выполняемая ветвь: " << selected_branch << endl;
+    double res;
+    int selected_branch;
 
-    return 0;
+    // Расчет резульата в зависимости от значения y * f(x)
+    if (func_value * y == 10) {
+        res = log(x) - pow(func_value, 2);
+        selected_branch = 1;
+    } else if (func_value * y < 10) {
+        res = 2 * y - 10 * sin(x);
+        selected_branch = 2;
+    } else {
+        res = pow(y, 2) + pow(func_value, 2);
+        selected_branch = 3;
+    }
+
+    cout << "Результат: " << res << endl;
+    cout << "Выбранная ветка: " << selected_branch << endl;
 }
