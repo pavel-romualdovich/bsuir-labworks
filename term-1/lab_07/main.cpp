@@ -12,13 +12,13 @@ int main() {
 
     int str_len = strlen(str);
 
+    // Убираем символ переноса из считанной строки
     if (str_len > 0 && str[str_len - 1] == '\n') {
         str[str_len - 1] = '\0';
         str_len--;
     }
 
-    int result_str_len = 0;
-    int word_start_idx = 0, replace_idx = 0;
+    int result_str_len = 0, word_start_idx = 0, replace_idx = 0;
 
     for (int i = 0; i < str_len; i++) {
         while (i < str_len && str[i] == ' ') i++; // Перемещаем указатель до начала слова
@@ -36,6 +36,7 @@ int main() {
         }
     }
 
+    cout << "Конечная строка: "; 
     for (int i = 0; i < result_str_len; i++) cout << str[i];
     cout << endl;
 
