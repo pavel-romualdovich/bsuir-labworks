@@ -31,7 +31,9 @@ int main() {
 
     int arr[MAX_ARR_SIZE][MAX_ARR_SIZE];
 
-    cout << "Введите матрицу, содержащую " << n << " строк и " << m << " столбцов:" << endl;
+    cout << "Введите матрицу, содержащую " << n << " строк и "
+         << m << " столбцов:" << endl;
+
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
             if (!(cin >> arr[i][j])) {
@@ -42,11 +44,11 @@ int main() {
     }
 
     int res = 0;
-    int line_sum;
 
     for (int i = 0; i < n; i++) {
         // Подсчет суммы элементов строки матрицы
-        line_sum = 0;
+        int line_sum = 0;
+
         for (int j = 0; j < m; j++) {
             line_sum += arr[i][j];
         }
