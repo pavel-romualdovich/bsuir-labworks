@@ -36,7 +36,7 @@ int main() {
         }
     }
 
-    cout << "Конечная строка: "; 
+    cout << "Конечная строка: ";
     for (int i = 0; i < result_str_len; i++) cout << str[i];
     cout << endl;
 
