@@ -1,44 +1,31 @@
 #include <iostream>
 
-const int MAX_STR_LEN = 1000;
+#include "car.hpp"
+#include "input.hpp"
 
 int main() {
-    using namespace std;
+    Car *cars = nullptr;
+    int count = 0;
 
-    char str[MAX_STR_LEN];
+    while (1) {
+        int command_number;
+        command_number = parse_command_number();
 
-    cout << "Введите строку (от 1 до 1000 символов): ";
-    fgets(str, MAX_STR_LEN, stdin);
-
-    int str_len = strlen(str);
-
-    // Убираем символ переноса из считанной строки
-    if (str_len > 0 && str[str_len - 1] == '\n') {
-        str[str_len - 1] = '\0';
-        str_len--;
-    }
-
-    int result_str_len = 0, word_start_idx = 0, replace_idx = 0;
-
-    for (int i = 0; i < str_len; i++) {
-        while (i < str_len && str[i] == ' ') i++; // Перемещаем указатель до начала слова
-        word_start_idx = i; // Сохраняем индекс начала слова
-
-        while (i < str_len && str[i] != ' ') i++; // Перемещаем указатель до конца слова
-
-        int word_len = i - word_start_idx;
-
-        if (word_len % 2 != 0) {
-            // Копируем слово на место, доступное для перезаписи
-            while(word_start_idx != i) str[replace_idx++] = str[word_start_idx++];
-            result_str_len += word_len + 1;
-            str[replace_idx++] = ' ';
+        switch (command_number) {
+            case PRINT_COMMAND_LIST:
+                print_command_list();
+                break;
+            case INPUT_CARS_DATA:
+                input_cars_data(&cars, &count);
+                break;
+            case OUTPUT_CARS_DATA:
+                output_cars_data(cars,count);
+                break;
+            case EXIT:
+                free(cars);
+                return 0;
+            default:
+                std::cout << "Такой команды не существует";
         }
     }
-
-    cout << "Конечная строка: ";
-    for (int i = 0; i < result_str_len; i++) cout << str[i];
-    cout << endl;
-
-    return 0;
 }

@@ -1,0 +1,1 @@
+clang++ main.cpp input.cpp car_logic.cpp -O2 -o cars
